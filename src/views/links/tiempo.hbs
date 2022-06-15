@@ -1,0 +1,30 @@
+
+<form action="/links/siguiente" method="POST">
+    <div class="form-group">
+        <input type="hidden" name="num_partida" value={{num_partida}} />
+    {{#each contenido}}
+        <div class="container p-4">
+            <div class="row" id="frase" name="frase">
+            
+                    {{content}}
+
+            </div>
+                    
+            <div class="form-group">
+                <input type="hidden" name="topic_sentence_number" value={{topic_sentence_number}} />
+                <input type="hidden" name="topic_id" value={{topic_id}} />   
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="respuesta" placeholder="Introduce la respuesta más irónica" autofocus>
+            </div>
+
+            <div class="form-group">
+                <button class= "btn btn-success btn-block">
+                    Siguiente frase
+                </button>
+            </div>
+
+        </div>
+     {{/each}}
+</form>

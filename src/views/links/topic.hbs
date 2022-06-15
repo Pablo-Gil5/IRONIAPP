@@ -1,0 +1,53 @@
+<form action="/links/tiempo" method="POST">
+    <div class="container p-4">
+        <h1>Selecciona un tema</h1>
+        {{#each topics}}
+                
+        
+       <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" name="flexRadioDefault2"+ {{this.name}} for="flexRadioDefault1"> 
+                {{this.name}}
+             </label>
+        </div>
+        {{!-- Google fonts 
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+               {{name}}
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
+            <label class="form-check-label" for="flexRadioDefault3">
+                {{name}}
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault4" checked>
+            <label class="form-check-label" for="flexRadioDefault4">
+                Tema 4
+            </label>
+        </div>
+        
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault5" checked>
+            <label class="form-check-label" for="flexRadioDefault5">
+                Tema 5
+            </label>
+        </div>
+         --}}
+        {{/each}}
+        <button class= "btn btn-success btn-block">
+            Seleccionar tema
+        </button>
+        
+        <div class="form-group">
+            <button class= "btn btn-success btn-block">
+                Crear usuario
+            </button>
+        </div>
+    </div>
+</form>
