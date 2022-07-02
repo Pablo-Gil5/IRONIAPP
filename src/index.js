@@ -3,12 +3,26 @@
 const express = require('express');
 const morgan = require('morgan');
 const exphbs = require('express-handlebars');
+const session = require('express-session');
 const path = require('path');
 //const { extname } = require('path');
+
+//autenticacion
+
+//const passport = require('passport');
+
+//----------------
+
 
 //Inicializar expess
 
 const app = express();
+//require("./lib/passport")
+
+//Variable global
+//app.locals.username = "Pablo";
+global.sessionUsername = "Ninguno";
+global.sessionID = 0;
 
 //Settings (Configuraciones)
 
@@ -27,6 +41,16 @@ app.set('view engine', '.hbs');
 //Middlewares (dev es para ver que esta llegando al server por consola)
 app.use(morgan('dev')); 
 
+app.use(session({
+    secret: 'ironiApp',
+    resave: false,
+    saveUninitialized: false
+})
+
+)
+//app.use(passport.initialize());
+//app.use(passport.session());
+
 //metodo para aceptar los datos de los formularios que tengan datos sencillos
 app.use(express.urlencoded({extended:false}));
 
@@ -37,12 +61,13 @@ app.use(express.json());
 
 //meter aqui variables que queremos usar en cualquier parte
 app.use((req,res,next)=>{
+    //app.locals.user = req.user;
     next();
 });
 
 //Rutas (URLs)
 app.use(require('./routes/index.js'));
-app.use(require('./routes/authentication'));
+//app.use(require('./routes/authentication'));
 
 //todas las rutas de links tienen el prefijo links
 app.use('/links', require('./routes/links'));
