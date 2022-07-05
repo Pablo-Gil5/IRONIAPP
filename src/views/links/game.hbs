@@ -1,27 +1,34 @@
-<div class="contianer p-4 bg-info" >
-    <h1>  Selecciona un modo de juego </h1> 
-   <form action="/links/game1" method="GET">
-        <div class="form-group">
-            <label>
-            </label>
-        </div>
-        <button type="submit" class="btn btn-dark">Solo texto </button>
-   </form>
+<div class="contianer p-4" >
+    <div class="card bg-primary">
+        <div class="card-header filas2 ">
+            <h1 class="centro">  Selecciona un modo de juego </h1> 
+        </div>     
+    </div>
+    <div class="col-md-4 mx-auto margen"> 
+        <div class="card bg-primary"> 
+                <form action="/links/game1" method="GET">
+                        <div class="form-group">
+                            <label>
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-dark w-100 margen2">Solo texto </button>
+                </form>
 
-    <form action="/links/game2" method="GET">
-        <div class="form-group">
-            <label>
-            </label>
-        </div>
-        <button type="submit" class="btn btn-dark">Texto e imágenes </button>
-    </form>
+                <form action="/links/game2" method="GET">
+                    <div class="form-group">
+                        <label>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100 margen2">Imágenes </button>
+                </form>
 
-    <form action="/links/games" method="GET">
-        <div class="form-group">
-            <label>
-            </label>
+                <form action="/links/games" method="GET">
+                    <div class="form-group">
+                        <label>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-dark w-100 margen2">Top puntuaciones </button>
+                </form>
         </div>
-        <button type="submit" class="btn btn-dark">Top puntuaciones </button>
-   </form>
-
+    </div>
 </div>

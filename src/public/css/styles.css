@@ -1,3 +1,60 @@
 body {
     background-color: #38a2e8;
   }
+
+
+/*bg-info */
+.navbar {
+  background-color: 	rgb(8, 8, 7);
+}
+
+.negro {
+  background-color: 	rgb(8, 8, 7);
+}
+
+.letra{
+  color : #F5FFFA;
+}
+
+.centro{
+  text-align:center;
+}
+
+.verde{
+  color :#3FFF33;
+}
+
+.filas{
+  height: 50px;
+}
+
+.filas2{
+  height: 100px;
+}
+
+.margen{
+  margin : 5px;
+}
+
+.margenarriba{
+  margin-top : 8px;
+}
+
+img {
+  max-width: 15%;
+  max-height: 15%;
+}
+
+.contenedorimg {
+  height: 10px;
+  width: 10px;
+ }
+
+.centrarimg{
+  margin: 0 auto;
+}
+
+.cetrar2{
+  display:block;
+  margin:auto;
+}

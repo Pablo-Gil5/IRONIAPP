@@ -1,29 +1,20 @@
- <div class="card bg-primary">
+<div class="card bg-primary">
             <div class="card-header filas2 ">
-                <h3 class="centro">Introduce una respuesta a la frase lo más irónica posible</h3>
+                <h3 class="centro">Introduce una respuesta a la imagen lo más irónica posible</h3>
             </div>
+ </div>
+ <div class="centrarimg" >
+    <img class="centrarimg cetrar2" src="https://images.pexels.com/photos/11851449/pexels-photo-11851449.jpeg?cs=srgb&dl=pexels-miguel-barrera-11851449.jpg&fm=jpg">    
  </div>
 <form action="/links/siguiente" method="POST">
     <div class="form-group">
-        <input type="hidden" name="num_partida" value={{num_partida}} />
-    {{#each contenido}}
+        {{!-- <input type="hidden" name="num_partida" value={{num_partida}} /> --}}
+   {{!--  {{#each contenido}}--}}
         <div class="container p-4">
-            <div class="row" id="frase" name="frase">
-            
-                <h6>
-                     <div class="card bg-primary">
-                        <div class="card-header">
-                            <span class="label">   {{content}}   </span>
-                        </div>
-                     </div>
-                </h6>
-
-            </div>
-                    
-            <div class="form-group">
+       {{!--     <div class="form-group">
                 <input type="hidden" name="topic_sentence_number" value={{topic_sentence_number}} />
                 <input type="hidden" name="topic_id" value={{topic_id}} />   
-            </div>
+            </div>--}}
 
             <div class="form-group">
                 <input type="text" class="form-control" name="respuesta" placeholder="Introduce la respuesta más irónica" autofocus>
@@ -31,10 +22,10 @@
 
             <div class="form-group">
                 <button class= "btn btn-success btn-block btn-block w-100">
-                    Siguiente frase
+                    Siguiente imagen
                 </button>
             </div>
-
         </div>
-     {{/each}}
+         
+    {{!-- {{/each}}--}}
 </form>

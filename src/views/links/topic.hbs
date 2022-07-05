@@ -1,7 +1,11 @@
 <form action="/links/tiempo" method="POST">
     <div class="container p-4">
-        <h1>Selecciona un tema</h1>
-        {{#each topics}}
+        <div class="card bg-primary">
+            <div class="card-header filas2 ">
+                <h1 class="centro">Selecciona un tema</h1>
+            </div>
+        </div>
+        {{!--{{#each topics}}
                 
         
        <div class="form-check">
@@ -39,7 +43,7 @@
                 Tema 5
             </label>
         </div>
-         --}}
+        
         {{/each}}
         <button class= "btn btn-success btn-block">
             Seleccionar tema
@@ -51,21 +55,52 @@
             </button>
         </div>
     </div>
+     --}}
 </form>
 <div class="container p-4">
-    <form action="/links/tiempo" method="POST">
-        <button class= "btn btn-success btn-block">
-            Tiempo
-        </button>
-    </form>
-    <form action="/links/colores" method="POST">
-        <button class= "btn btn-success btn-block">
-            Colores
-        </button>
-    </form>
-    <form action="/links/situaciones" method="POST">
-        <button class= "btn btn-success btn-block">
-            Situaciones
-        </button>
-    </form>
+    <div class="col-md-4 mx-auto margen">
+        <div class="card bg-primary">
+
+            <form action="/links/tiempo" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Tiempo
+                </button>
+            </form>
+            <form action="/links/colores" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Colores
+                </button>
+            </form>
+            <form action="/links/situaciones" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Situaciones
+                </button>
+            </form>
+
+            <form action="/links/deporte" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Deporte
+                </button>
+            </form>
+
+            <form action="/links/politica" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Política
+                </button>
+            </form>
+
+            <form action="/links/gaming" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Gaming
+                </button>
+            </form>
+
+            <form action="/links/serie" method="POST">
+                <button class= "btn btn-success btn-block w-100 margen2 margenarriba">
+                    Series
+                </button>
+            </form>
+
+        </div>
+    </div>
 </div>

@@ -132,10 +132,16 @@ router.post('/login', async (req,res) => {
         }
         else{
             console.log('Id del usuario: '+ id);
-            res.render('links/game');
+            res.render('links/login_error');
         }
     }
 
+});
+
+//Menu de juego
+router.get('/game', async(req,res) => {
+    
+    res.render('links/game');
 });
 
 //juego
@@ -149,14 +155,54 @@ router.get('/game1', async(req,res) => {
 //Top puntuaciones
 router.get('/games', async(req,res) => {
     
-    const games = await pool.query('select * from game order by points');
+    const games = await pool.query('select * from game where points is not null order by points desc');
 
-    res.render('links/top_games', {games:games});
+    console.log(games[0].user_id);
+    console.log(games[0].id);
+    console.log(games[0].points);
+
+    //jugador 1
+    const jugador1 = {
+        user : games[0].user_id,
+        id : games[0].id,
+        points: games[0].points
+    };
+
+    //jugador 2
+    const jugador2 = {
+        user : games[1].user_id,
+        id : games[1].id,
+        points: games[1].points
+    };
+
+    //jugador 3
+    const jugador3 = {
+        user : games[2].user_id,
+        id : games[2].id,
+        points: games[2].points
+    };   
+    
+    //jugador 4
+    const jugador4 = {
+        user : games[3].user_id,
+        id : games[3].id,
+        points: games[3].points
+    };
+
+    //jugador 5
+    const jugador5 = {
+        user : games[4].user_id,
+        id : games[4].id,
+        points: games[4].points
+    };
+
+    res.render('links/top_games', {games:games,jugador1:jugador1,jugador2:jugador2,jugador3:jugador3,jugador4:jugador4,jugador5:jugador5});
 });
 
 
 router.get('/game2', (req,res) => {
-    res.send('hola');
+    res.render('links/imagen');
+   // res.send('hola');
 });
 
 //temas
