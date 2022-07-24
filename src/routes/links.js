@@ -99,6 +99,7 @@ router.get('/ok', (req,res) => {
 
 //Login
 router.get('/login', (req,res) => {
+
     res.render('links/login');
 });
 
@@ -140,8 +141,24 @@ router.post('/login', async (req,res) => {
 
 //Menu de juego
 router.get('/game', async(req,res) => {
-    
-    res.render('links/game');
+
+    if(sessionID != null){
+        console.log("Menu de juego");
+        res.render('links/game');
+    }
+    else{
+        res.render('links/login');
+    }
+});
+
+//Cerrar sesion
+router.get('/logout', async(req,res) => {
+    console.log("Cerrar sesion");
+
+    sessionID = null;
+    sessionUsername = null;
+
+    res.render('links/menu');
 });
 
 //juego
@@ -157,12 +174,26 @@ router.get('/games', async(req,res) => {
     
     const games = await pool.query('select * from game where points is not null order by points desc');
 
+    const usuario1 = await pool.query('select * from users where id='+games[0].user_id);
+    const usuario2 = await pool.query('select * from users where id='+games[1].user_id);
+    const usuario3 = await pool.query('select * from users where id='+games[2].user_id);
+    const usuario4 = await pool.query('select * from users where id='+games[3].user_id);
+    const usuario5 = await pool.query('select * from users where id='+games[4].user_id);
+    const usuario6 = await pool.query('select * from users where id='+games[5].user_id);
+    const usuario7 = await pool.query('select * from users where id='+games[6].user_id);
+    const usuario8 = await pool.query('select * from users where id='+games[7].user_id);
+    const usuario9 = await pool.query('select * from users where id='+games[8].user_id);
+    const usuario10 = await pool.query('select * from users where id='+games[9].user_id);
+
+    console.log(usuario1[0].username);
+
     console.log(games[0].user_id);
     console.log(games[0].id);
     console.log(games[0].points);
 
     //jugador 1
     const jugador1 = {
+        name : usuario1[0].username,
         user : games[0].user_id,
         id : games[0].id,
         points: games[0].points
@@ -170,6 +201,7 @@ router.get('/games', async(req,res) => {
 
     //jugador 2
     const jugador2 = {
+        name : usuario2[0].username,
         user : games[1].user_id,
         id : games[1].id,
         points: games[1].points
@@ -177,6 +209,7 @@ router.get('/games', async(req,res) => {
 
     //jugador 3
     const jugador3 = {
+        name : usuario3[0].username,
         user : games[2].user_id,
         id : games[2].id,
         points: games[2].points
@@ -184,6 +217,7 @@ router.get('/games', async(req,res) => {
     
     //jugador 4
     const jugador4 = {
+        name : usuario4[0].username,
         user : games[3].user_id,
         id : games[3].id,
         points: games[3].points
@@ -191,12 +225,48 @@ router.get('/games', async(req,res) => {
 
     //jugador 5
     const jugador5 = {
+        name : usuario5[0].username,
         user : games[4].user_id,
         id : games[4].id,
         points: games[4].points
     };
 
-    res.render('links/top_games', {games:games,jugador1:jugador1,jugador2:jugador2,jugador3:jugador3,jugador4:jugador4,jugador5:jugador5});
+    const jugador6 = {
+        name : usuario6[0].username,
+        user : games[5].user_id,
+        id : games[5].id,
+        points: games[5].points
+    };
+
+    const jugador7 = {
+        name : usuario7[0].username,
+        user : games[6].user_id,
+        id : games[6].id,
+        points: games[6].points
+    };
+
+    const jugador8 = {
+        name : usuario8[0].username,
+        user : games[7].user_id,
+        id : games[7].id,
+        points: games[7].points
+    };
+
+    const jugador9 = {
+        name : usuario9[0].username,
+        user : games[8].user_id,
+        id : games[8].id,
+        points: games[8].points
+    };
+
+    const jugador10 = {
+        name : usuario10[0].username,
+        user : games[9].user_id,
+        id : games[9].id,
+        points: games[9].points
+    };
+
+    res.render('links/top_games', {games:games,jugador1:jugador1,jugador2:jugador2,jugador3:jugador3,jugador4:jugador4,jugador5:jugador5,jugador6:jugador6, jugador7:jugador7, jugador8:jugador8, jugador9:jugador9,jugador10:jugador10});
 });
 
 
@@ -322,6 +392,43 @@ function llamada (frase, num_partida, topic_sentence_number, topic_id){
 
    // res.send(pythonResponse);
 }
+
+function llamada_demo (frase, num_partida, topic_sentence_number, topic_id){
+
+    async function insertar (answer){
+        console.log("Inserto frase");
+        await pool.query('INSERT INTO ANSWER SET ?',[answer]);
+        console.log("Frase insetada");
+    };
+
+    if(topic_sentence_number == 1){
+        puntos = 97;
+    }
+    else if(topic_sentence_number == 2){
+        puntos = 99;
+    }
+    else if(topic_sentence_number == 3){
+        puntos = 74;
+    }
+    else{
+        puntos = 95;
+    }
+    ;
+
+    const newAnswer = {
+        content : frase,
+        user_id : 1,
+        game_id : num_partida,
+        topic_id : topic_id,
+        topic_sentence_number : topic_sentence_number,
+        points : puntos
+    };
+
+    console.log(newAnswer);
+
+    insertar(newAnswer);
+}
+
 
 function hola(){
     eel.expose(say_hello_js);               // Expose this function to Python
@@ -462,6 +569,138 @@ router.post('/tiempo', async (req,res) => {
       res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
 });
 
+router.post('/situaciones', async (req,res) => {
+
+    const newLink = {
+        user_id : 1
+    };
+
+    console.log(newLink);
+
+    await pool.query('INSERT INTO GAME SET ?',[newLink])
+
+    const max = await pool.query('select * from game where id in (select max(id) from game)');
+    const fila= max[0];
+    const num_partida = fila.id;
+    console.log('Fila : ');
+    console.log(num_partida);
+    console.log('-------');
+
+    const contenido = await pool.query('select * from sentence where topic_id ='+3+ ' and topic_sentence_number ='+1);
+
+    res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
+});
+
+router.post('/deporte', async (req,res) => {
+
+    const newLink = {
+        user_id : 1
+    };
+
+    console.log(newLink);
+
+    await pool.query('INSERT INTO GAME SET ?',[newLink])
+
+    const max = await pool.query('select * from game where id in (select max(id) from game)');
+    const fila= max[0];
+    const num_partida = fila.id;
+    console.log('Fila : ');
+    console.log(num_partida);
+    console.log('-------');
+
+    const contenido = await pool.query('select * from sentence where topic_id ='+4+ ' and topic_sentence_number ='+1);
+
+    res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
+});
+
+router.post('/politica', async (req,res) => {
+
+    const newLink = {
+        user_id : 1
+    };
+
+    console.log(newLink);
+
+    await pool.query('INSERT INTO GAME SET ?',[newLink])
+
+    const max = await pool.query('select * from game where id in (select max(id) from game)');
+    const fila= max[0];
+    const num_partida = fila.id;
+    console.log('Fila : ');
+    console.log(num_partida);
+    console.log('-------');
+
+    const contenido = await pool.query('select * from sentence where topic_id ='+5+ ' and topic_sentence_number ='+1);
+
+    res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
+});
+
+router.post('/gaming', async (req,res) => {
+
+    const newLink = {
+        user_id : 1
+    };
+
+    console.log(newLink);
+
+    await pool.query('INSERT INTO GAME SET ?',[newLink])
+
+    const max = await pool.query('select * from game where id in (select max(id) from game)');
+    const fila= max[0];
+    const num_partida = fila.id;
+    console.log('Fila : ');
+    console.log(num_partida);
+    console.log('-------');
+
+    const contenido = await pool.query('select * from sentence where topic_id ='+6+ ' and topic_sentence_number ='+1);
+
+    res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
+});
+
+router.post('/series', async (req,res) => {
+
+    const newLink = {
+        user_id : 1
+    };
+
+    console.log(newLink);
+
+    await pool.query('INSERT INTO GAME SET ?',[newLink])
+
+    const max = await pool.query('select * from game where id in (select max(id) from game)');
+    const fila= max[0];
+    const num_partida = fila.id;
+    console.log('Fila : ');
+    console.log(num_partida);
+    console.log('-------');
+
+    const contenido = await pool.query('select * from sentence where topic_id ='+7+ ' and topic_sentence_number ='+1);
+
+    res.render('links/tiempo', {contenido:contenido, num_partida : num_partida });
+});
+
+router.post('/siguienteimg', async (req,res) => {
+    var resultado = await llamada(req.body.respuesta, 1000, 1, 10);
+    res.render('links/imagen2');
+});
+
+router.post('/siguienteimg2', async (req,res) => {
+    var resultado = await llamada(req.body.respuesta, 1000, 2, 10);
+    res.render('links/imagen3');
+});
+
+router.post('/siguienteimg3', async (req,res) => {
+    var resultado = await llamada(req.body.respuesta, 1000, 3, 10);
+    res.render('links/imagen4');
+});
+
+router.post('/siguienteimg4', async (req,res) => {
+    var resultado = await llamada(req.body.respuesta, 1000, 4, 10);
+    res.render('links/final_img');
+});
+
+
+
 router.post('/siguiente', async (req,res) => {
     console.log(req.body);
     console.log("num_partida"+ req.body.num_partida);
@@ -472,10 +711,11 @@ router.post('/siguiente', async (req,res) => {
     console.log("frase de la llamada: "+ req.body.respuesta);
     //llamada (frase);
 
-    var resultado = await llamada(req.body.respuesta, req.body.num_partida, Number(req.body.topic_sentence_number,10), Number(req.body.topic_id ,10));
-    console.log(resultado)
-    console.log("Resultado: "||resultado)
+   var resultado = await llamada(req.body.respuesta, req.body.num_partida, Number(req.body.topic_sentence_number,10), Number(req.body.topic_id ,10));
+  //  console.log(resultado)
+  //  console.log("Resultado: "||resultado)
 
+   // await llamada_demo(req.body.respuesta, req.body.num_partida, Number(req.body.topic_sentence_number,10), Number(req.body.topic_id ,10));
 
     console.log(req.body.topic_sentence_number);
     var numero_frase =  Number(req.body.topic_sentence_number,10) + 1;

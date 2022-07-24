@@ -1,29 +1,79 @@
 <div class="container p-4">
     <div class="row">
 
-        <div class="card bg-primary">
-            <div class="card-header filas2 ">
-                <h1>  Top de puntuaciones: </h1> 
+        <div class="card c1">
+            <div class="card-header filas2 centro c1">
+                <h1>  Top de puntuaciones </h1> 
             </div>     
          </div>
 
-        <ul class="list-group ">
-             <li class="list-group-item bg-success">1. Usuario: Pablo <!--{{jugador1.user}}-->, número de partida: {{jugador1.id}}, PUNTOS: {{jugador1.points}}</li>
-             <li class="list-group-item bg-warning">2. Usuario: Juan<!--{{jugador2.user}}-->, número de partida: {{jugador2.id}}, PUNTOS: {{jugador2.points}}</li>
-             <li class="list-group-item bg-success">3. Usuario: María<!--{{jugador3.user}}-->, número de partida: {{jugador3.id}}, PUNTOS: {{jugador3.points}}</li>
-             <li class="list-group-item bg-warning">4. Usuario: Alejandro<!--{{jugador4.user}}-->, número de partida: {{jugador4.id}}, PUNTOS: {{jugador4.points}}</li>
-             <li class="list-group-item bg-success">5. Usuario: Laura<!--{{jugador5.user}}-->, número de partida: {{jugador5.id}}, PUNTOS: {{jugador5.points}}</li>
-            <!-- 
-            <li class="list-group-item">6 Dapibus ac facilisis in</li>
-             <li class="list-group-item">7 Dapibus ac facilisis in</li>
-             <li class="list-group-item">8 Dapibus ac facilisis in</li>
-             <li class="list-group-item">9 Dapibus ac facilisis in</li>
-             <li class="list-group-item">10 Dapibus ac facilisis in</li>
-            {{#each games}}
-                <li class"list-group-item">Usuario: {{user_id}}, Identificador de la partida: {{id}}, Puntos: {{points}} </li>
-
-            {{/each}}
-            -->  
-        </ul>
+        <table class="default">
+            <tr>
+                <th>Puesto</td>
+                <th>Usuario</td>
+                <th>Número de partida</td>
+                <th>Puntos</td>
+            </tr>
+            <tr>
+                <th class="negrita">1</td>
+                <td>{{jugador1.name}}</td>
+                <td>{{jugador1.id}}</td>
+                <td>{{jugador1.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">2</td>
+                <td>{{jugador2.name}}</td>
+                <td>{{jugador2.id}}</td>
+                <td>{{jugador2.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">3</td>
+                <td>{{jugador3.name}}</td>
+                <td>{{jugador3.id}}</td>
+                <td>{{jugador3.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">4</td>
+                <td>{{jugador4.name}}</td>
+                <td>{{jugador4.id}}</td>
+                <td>{{jugador4.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">5</td>
+                <td>{{jugador5.name}}</td>
+                <td>{{jugador5.id}}</td>
+                <td>{{jugador5.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">6</td>
+                <td>{{jugador6.name}}</td>
+                <td>{{jugador6.id}}</td>
+                <td>{{jugador6.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">7</td>
+                <td>{{jugador7.name}}</td>
+                <td>{{jugador7.id}}</td>
+                <td>{{jugador7.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">8</td>
+                <td>{{jugador8.name}}</td>
+                <td>{{jugador8.id}}</td>
+                <td>{{jugador8.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">9</td>
+                <td>{{jugador9.name}}</td>
+                <td>{{jugador9.id}}</td>
+                <td>{{jugador9.points}}</td>
+            </tr>
+            <tr>
+                <th class="negrita">10</td>
+                <td>{{jugador10.name}}</td>
+                <td>{{jugador10.id}}</td>
+                <td>{{jugador10.points}}</td>
+            </tr>
+        </table>
     </div>
 </div>

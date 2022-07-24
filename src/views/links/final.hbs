@@ -1,7 +1,7 @@
 
 
 <div>
-    <div class="card bg-primary">
+    <div class="card c1">
         <div class="card-header filas2 ">
             <h1>Has llegado al final del juego, la puntuación de la partida por frases es:</h1>
         </div>
@@ -14,11 +14,11 @@
                     {{content}}
             {{/each}}
             --}}
-            <li class = "list-group-item bg-primary">Número de la partida: {{num_partida}}</li>
+            <li class = "list-group-item c1">Número de la partida: {{num_partida}}</li>
             {{#each contenido}}
-                <li class = "list-group-item bg-success">Frase {{topic_sentence_number}} tu respuesta fue: {{content}}, puntuación obtenida: {{points}} </li>
+                <li class = "list-group-item c3">Frase {{topic_sentence_number}} tu respuesta fue: {{content}}, puntuación obtenida: {{points}} </li>
             {{/each}}
-            <li class = "list-group-item bg-primary"><h6>Puntuación media de la partida: {{puntuacion_media}}</h6></li>
+            <li class = "list-group-item c1"><h6>Puntuación media de la partida: {{puntuacion_media}}</h6></li>
         </ul>
     </div>
 </div>
